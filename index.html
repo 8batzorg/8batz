@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Asociación 8 Batz — desarrollo comunitario, oportunidades y bienestar para poblaciones prioritarias del Occidente de Guatemala.">
+  <title>8 Batz | Desde el territorio, construimos oportunidades</title>
+  <style>
+    :root{
+      --ink:#1d2a25;
+      --muted:#66736d;
+      --paper:#fbfaf6;
+      --white:#ffffff;
+      --earth:#7b4b32;
+      --earth-dark:#5f3825;
+      --gold:#c79a45;
+      --sage:#667b68;
+      --line:#e6e1d7;
+      --soft:#f1eee6;
+      --max:1160px;
+      --radius:18px;
+      --shadow:0 18px 50px rgba(29,42,37,.10);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .topbar{background:var(--ink);color:#fff;font-size:.82rem}
+    .topbar .container{display:flex;justify-content:space-between;gap:20px;padding:9px 0}
+    header{position:sticky;top:0;z-index:20;background:rgba(251,250,246,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.04em}
+    .mark{width:44px;height:44px;border:2px solid var(--earth);border-radius:50%;display:grid;place-items:center;color:var(--earth);font-size:1.1rem;font-weight:900}
+    .brand small{display:block;font-size:.68rem;letter-spacing:.16em;color:var(--muted);font-weight:700}
+    .navlinks{display:flex;align-items:center;gap:25px;font-size:.9rem;font-weight:650}
+    .navlinks a:hover{color:var(--earth)}
+    .menu{display:none;border:0;background:none;font-size:1.5rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 20px;font-weight:800;font-size:.88rem;border:1px solid transparent;transition:.2s}
+    .btn-primary{background:var(--earth);color:#fff}
+    .btn-primary:hover{background:var(--earth-dark);transform:translateY(-1px)}
+    .btn-light{background:#fff;border-color:var(--line)}
+    .btn-light:hover{border-color:var(--earth);color:var(--earth)}
+    .hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#f2eee4 0%,#fbfaf6 58%,#e7eadf 100%)}
+    .hero:before{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(123,75,50,.15);border-radius:50%;right:-160px;top:-180px}
+    .hero-grid{min-height:650px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:70px;padding:80px 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--earth);font-size:.78rem;font-weight:850;letter-spacing:.16em;text-transform:uppercase;margin-bottom:20px}
+    .eyebrow:before{content:"";width:28px;height:2px;background:var(--gold)}
+    h1{font-size:clamp(3rem,6vw,5.7rem);line-height:.98;letter-spacing:-.055em;max-width:760px}
+    .hero p{font-size:1.16rem;color:var(--muted);max-width:650px;margin:28px 0 32px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .visual{min-height:440px;border-radius:32px;background:var(--earth);position:relative;overflow:hidden;box-shadow:var(--shadow);display:flex;align-items:end;padding:34px;color:#fff}
+    .visual:before,.visual:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.32);border-radius:50%}
+    .visual:before{width:430px;height:430px;right:-150px;top:-150px}
+    .visual:after{width:300px;height:300px;left:-130px;bottom:-130px}
+    .woven{position:absolute;inset:55px;border:1px solid rgba(255,255,255,.28);transform:rotate(8deg)}
+    .woven:before,.woven:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 19px,rgba(255,255,255,.12) 20px 21px,transparent 22px 40px)}
+    .visual-copy{position:relative;z-index:2;max-width:360px}
+    .visual-copy strong{display:block;font-size:2rem;line-height:1.05;margin-bottom:8px}
+    .visual-copy span{color:rgba(255,255,255,.78)}
+    section{padding:100px 0}
+    .section-head{max-width:760px;margin-bottom:50px}
+    .section-head h2{font-size:clamp(2.1rem,4vw,3.5rem);line-height:1.05;letter-spacing:-.04em;margin:10px 0 16px}
+    .section-head p{color:var(--muted);font-size:1.05rem}
+    .about{background:#fff}
+    .about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:80px;align-items:start}
+    .bigquote{font-size:2rem;line-height:1.2;font-weight:750;letter-spacing:-.03em}
+    .about-copy p{color:var(--muted);font-size:1.04rem;margin-bottom:18px}
+    .areas{background:var(--soft)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;min-height:220px;transition:.2s}
+    .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .num{font-size:.75rem;font-weight:900;color:var(--gold);letter-spacing:.12em}
+    .card h3{font-size:1.3rem;line-height:1.15;margin:24px 0 12px}
+    .card p{color:var(--muted);font-size:.94rem}
+    .capabilities{background:var(--ink);color:#fff}
+    .capabilities .section-head p{color:rgba(255,255,255,.7)}
+    .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.16)}
+    .cap{padding:28px;background:var(--ink);min-height:130px}
+    .cap strong{display:block;font-size:1.05rem;margin-bottom:7px}
+    .cap span{color:rgba(255,255,255,.62);font-size:.9rem}
+    .territory-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .territory-panel{min-height:390px;border-radius:28px;background:linear-gradient(145deg,#ded9cc,#eef0e7);position:relative;overflow:hidden}
+    .territory-panel:before{content:"OCCIDENTE";position:absolute;left:28px;top:26px;font-size:.8rem;font-weight:900;letter-spacing:.2em;color:var(--earth)}
+    .mountain{position:absolute;bottom:-40px;width:75%;height:240px;background:rgba(102,123,104,.28);clip-path:polygon(0 100%,35% 20%,52% 57%,72% 4%,100% 100%)}
+    .mountain.two{right:-8%;width:70%;height:190px;background:rgba(123,75,50,.18);transform:scaleX(-1)}
+    .territory-copy p{color:var(--muted);margin-bottom:18px}
+    .steps{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:35px}
+    .step{border-top:2px solid var(--gold);padding-top:13px;font-size:.84rem;font-weight:800}
+    .projects{background:#fff}
+    .project-box{border:1px solid var(--line);border-radius:28px;padding:45px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+    .project-box h2{font-size:2.5rem;line-height:1.05;letter-spacing:-.04em}
+    .project-box p{color:var(--muted);margin:15px 0 22px}
+    .impact{background:var(--soft)}
+    .impact-box{text-align:center;max-width:850px;margin:auto}
+    .impact-box h2{font-size:clamp(2.2rem,5vw,4rem);line-height:1.02;letter-spacing:-.045em}
+    .impact-box p{color:var(--muted);margin:20px auto 0;max-width:680px}
+    .allies{background:#fff}
+    .allies-list{display:flex;flex-wrap:wrap;gap:12px}
+    .pill{border:1px solid var(--line);border-radius:999px;padding:12px 18px;background:var(--paper);font-weight:700}
+    .final{background:linear-gradient(125deg,var(--earth-dark),var(--earth));color:#fff}
+    .final .container{text-align:center}
+    .final h2{font-size:clamp(2.4rem,5vw,4.5rem);line-height:1;letter-spacing:-.05em;max-width:850px;margin:0 auto 20px}
+    .final p{color:rgba(255,255,255,.78);max-width:680px;margin:0 auto 28px}
+    footer{background:#17211d;color:#fff;padding:55px 0 25px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px}
+    footer p,footer a{color:rgba(255,255,255,.62);font-size:.9rem}
+    footer h4{margin-bottom:13px}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:18px;display:flex;justify-content:space-between;gap:20px;font-size:.78rem;color:rgba(255,255,255,.45)}
+    @media(max-width:900px){
+      .navlinks{display:none}.menu{display:block}
+      .hero-grid,.about-grid,.territory-grid,.project-box{grid-template-columns:1fr}
+      .hero-grid{padding:65px 0}.visual{min-height:330px}
+      .cards,.cap-grid{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:repeat(3,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:600px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      .topbar .container{display:none}
+      nav{min-height:68px}
+      section{padding:70px 0}
+      .cards,.cap-grid,.footer-grid{grid-template-columns:1fr}
+      .hero-grid{min-height:auto;padding:55px 0}
+      h1{font-size:3.2rem}
+      .visual{min-height:280px;padding:25px}
+      .project-box{padding:28px}
+      .steps{grid-template-columns:1fr 1fr}
+      .footer-bottom{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="container"><span>Asociación para el Desarrollo Comunitario de Poblaciones Prioritarias del Altiplano de Occidente</span><span>Guatemala</span></div></div>
+
+  <header>
+    <nav class="container">
+      <a class="brand" href="#inicio" aria-label="8 Batz inicio">
+        <span class="mark">8</span>
+        <span>8 BATZ<small>DESDE EL TERRITORIO</small></span>
+      </a>
+      <div class="navlinks">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#trabajo">Áreas de trabajo</a>
+        <a href="#proyectos">Programas</a>
+        <a href="#impacto">Impacto</a>
+        <a href="#alianzas">Alianzas</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <a class="btn btn-primary" href="#contacto">Colaborá con 8 Batz</a>
+      <button class="menu" aria-label="Abrir menú">☰</button>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Organización guatemalteca</div>
+          <h1>Desde el territorio, construimos oportunidades.</h1>
+          <p>Impulsamos procesos de desarrollo comunitario que fortalecen capacidades, generan oportunidades y contribuyen al bienestar de poblaciones prioritarias del Occidente de Guatemala.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#trabajo">Conocé nuestro trabajo</a>
+            <a class="btn btn-light" href="#contacto">Colaborá con 8 Batz</a>
+          </div>
+        </div>
+        <div class="visual" aria-label="Identidad visual de 8 Batz">
+          <div class="woven"></div>
+          <div class="visual-copy">
+            <strong>Territorio.<br>Comunidad.<br>Oportunidad.</strong>
+            <span>Soluciones pertinentes, capacidades locales y alianzas para el desarrollo.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros" class="about">
+      <div class="container">
+        <div class="about-grid">
+          <div>
+            <div class="eyebrow">Quiénes somos</div>
+            <div class="bigquote">Conocemos el territorio. Construimos soluciones con las comunidades.</div>
+          </div>
+          <div class="about-copy">
+            <p>8 Batz es una organización guatemalteca comprometida con el desarrollo integral de comunidades y poblaciones prioritarias del Occidente del país.</p>
+            <p>Diseñamos, articulamos y ejecutamos iniciativas que responden a necesidades concretas del territorio, combinando conocimiento técnico, participación comunitaria y alianzas con instituciones públicas, privadas, académicas y de cooperación.</p>
+            <p>Creemos que los procesos de desarrollo son más sostenibles cuando las comunidades participan activamente en la construcción de las soluciones y fortalecen sus propias capacidades.</p>
+            <a class="btn btn-light" href="#trabajo">Conocé 8 Batz</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trabajo" class="areas">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Nuestro trabajo</div>
+          <h2>Trabajamos donde las necesidades se convierten en oportunidades de desarrollo.</h2>
+          <p>Nuestras áreas responden a la misión institucional y pueden articularse según las necesidades de cada territorio y población.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><span class="num">01</span><h3>Desarrollo comunitario</h3><p>Fortalecimiento de capacidades, participación, organización y procesos que promueven soluciones construidas desde las comunidades.</p></article>
+          <article class="card"><span class="num">02</span><h3>Nutrición y salud</h3><p>Iniciativas orientadas al bienestar, la prevención y el desarrollo saludable de poblaciones prioritarias, con énfasis en madres y primera infancia.</p></article>
+          <article class="card"><span class="num">03</span><h3>Educación y capacidades</h3><p>Formación, capacitación y acompañamiento para ampliar conocimientos, habilidades y oportunidades.</p></article>
+          <article class="card"><span class="num">04</span><h3>Desarrollo económico y medios de vida</h3><p>Impulso a emprendimientos, agricultura, iniciativas productivas y alternativas que fortalezcan los medios de vida rurales.</p></article>
+          <article class="card"><span class="num">05</span><h3>Ambiente, agua y entornos saludables</h3><p>Soluciones y procesos comunitarios vinculados al agua, ambiente, vivienda saludable y reducción de riesgos.</p></article>
+          <article class="card"><span class="num">06</span><h3>Infraestructura y soluciones comunitarias</h3><p>Apoyo a iniciativas que mejoren condiciones y servicios comunitarios mediante soluciones pertinentes y sostenibles.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="capabilities">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Nuestras capacidades</div>
+          <h2>Convertimos ideas en procesos que pueden ejecutarse y medirse.</h2>
+          <p>Además de nuestros temas de trabajo, contamos con capacidades transversales para gestionar iniciativas de principio a fin.</p>
+        </div>
+        <div class="cap-grid">
+          <div class="cap"><strong>Formulación de proyectos</strong><span>Diseño técnico y planificación orientada a resultados.</span></div>
+          <div class="cap"><strong>Gestión y movilización de recursos</strong><span>Articulación de oportunidades, alianzas y financiamiento.</span></div>
+          <div class="cap"><strong>Coordinación y ejecución</strong><span>Organización de equipos, actividades y recursos en territorio.</span></div>
+          <div class="cap"><strong>Monitoreo y evaluación</strong><span>Seguimiento, evidencia, aprendizaje y mejora continua.</span></div>
+          <div class="cap"><strong>Administración y gestión financiera</strong><span>Uso responsable, ordenado y transparente de los recursos.</span></div>
+          <div class="cap"><strong>Articulación institucional</strong><span>Trabajo conjunto con actores públicos, privados, académicos y sociales.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container territory-grid">
+        <div class="territory-panel" aria-hidden="true"><div class="mountain"></div><div class="mountain two"></div></div>
+        <div class="territory-copy">
+          <div class="eyebrow">Territorio</div>
+          <h2>Occidente de Guatemala es nuestro punto de partida.</h2>
+          <p>Entendemos que cada comunidad tiene condiciones sociales, económicas, culturales y ambientales propias.</p>
+          <p>Por eso escuchamos, analizamos y adaptamos. Buscamos que las soluciones sean pertinentes al territorio, respeten la diversidad cultural y fortalezcan capacidades locales.</p>
+          <div class="steps">
+            <div class="step">Identificamos</div><div class="step">Diseñamos</div><div class="step">Articulamos</div><div class="step">Ejecutamos</div><div class="step">Medimos</div><div class="step">Aprendemos</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="projects">
+      <div class="container">
+        <div class="project-box">
+          <div><div class="eyebrow">Programas y proyectos</div><h2>Las ideas generan cambios cuando llegan al territorio.</h2></div>
+          <div><p>Formulamos, coordinamos y ejecutamos iniciativas que articulan recursos, conocimiento técnico y participación comunitaria para responder a necesidades concretas.</p><a class="btn btn-primary" href="#contacto">Hablemos de una iniciativa</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impacto" class="impact">
+      <div class="container impact-box">
+        <div class="eyebrow">Impacto</div>
+        <h2>Lo que hacemos debe poder demostrarse.</h2>
+        <p>Creemos en resultados verificables, información transparente y aprendizaje continuo. A medida que nuestros programas avancen, este espacio mostrará resultados, indicadores y experiencias del territorio.</p>
+      </div>
+    </section>
+
+    <section id="alianzas" class="allies">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Alianzas</div>
+          <h2>Los desafíos del desarrollo no se resuelven solos.</h2>
+          <p>Buscamos construir relaciones de colaboración con actores que compartan el compromiso con el desarrollo y el bienestar de las comunidades.</p>
+        </div>
+        <div class="allies-list">
+          <span class="pill">Instituciones públicas</span><span class="pill">Municipalidades</span><span class="pill">Cooperación</span><span class="pill">Sector privado</span><span class="pill">Universidades</span><span class="pill">Organizaciones sociales</span><span class="pill">Organizaciones comunitarias</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="final">
+      <div class="container">
+        <h2>Construyamos oportunidades desde el territorio.</h2>
+        <p>Si compartís nuestra visión y tenés una iniciativa, una idea o una oportunidad de colaboración, queremos conocerla.</p>
+        <a class="btn btn-light" href="mailto:info@8batz.org">Escribinos a info@8batz.org</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="brand"><span class="mark">8</span><span>8 BATZ<small>DESDE EL TERRITORIO</small></span></div><p style="margin-top:16px;max-width:440px">Asociación para el Desarrollo Comunitario de Poblaciones Prioritarias del Altiplano de Occidente.</p></div>
+        <div><h4>Explorá</h4><p><a href="#nosotros">Nosotros</a></p><p><a href="#trabajo">Áreas de trabajo</a></p><p><a href="#proyectos">Programas y proyectos</a></p><p><a href="#impacto">Impacto</a></p></div>
+        <div><h4>Contacto</h4><p><a href="mailto:info@8batz.org">info@8batz.org</a></p><p>Occidente de Guatemala</p><p><a href="#alianzas">Colaborá con 8 Batz</a></p></div>
+      </div>
+      <div class="footer-bottom"><span>© 8 Batz. Todos los derechos reservados.</span><span>Transparencia · Responsabilidad · Comunidad</span></div>
+    </div>
+  </footer>
+</body>
+</html>
