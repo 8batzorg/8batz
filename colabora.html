@@ -144,6 +144,36 @@ h3, h4, h5, h6 {
 #colabora button[disabled]{opacity:.62;cursor:not-allowed}
 </style>
 
+
+<style id="v19-colabora-refinada">
+/* V19: jerarquía más sobria y consistente para Colaborá */
+#colabora .contact-hero{background:#f7f3eb;padding:64px 0 52px;border-bottom:1px solid #e9e1d5}
+#colabora .contact-hero .wrap{max-width:980px}
+#colabora .contact-hero h1{font-family:"DM Serif Display",serif!important;font-size:clamp(40px,4.4vw,56px);line-height:1.02;letter-spacing:-.02em;margin:8px 0 16px;color:var(--green2);font-weight:400}
+#colabora .contact-hero p{max-width:760px;font-size:17px;line-height:1.7;color:#514b44;margin:0}
+#colabora .contact-main,#colabora .contact-reasons{padding:58px 0}
+#colabora .contact-main:nth-of-type(4){background:#fbf8f2;border-top:1px solid #eee7dc}
+#colabora .contact-main h2,#colabora .contact-reasons h2{font-family:"DM Serif Display",serif!important;font-size:clamp(30px,3vw,39px);line-height:1.12;letter-spacing:-.01em;font-weight:400;margin:8px 0 16px;color:var(--green2)}
+#colabora .contact-main> .wrap > p{max-width:800px;font-size:16px;line-height:1.7;color:#514b44}
+#colabora .eyebrow{font-size:11px;letter-spacing:.18em}
+#colabora .cards-grid{gap:16px;margin-top:28px}
+#colabora .card{padding:24px 25px;box-shadow:none}
+#colabora .card h3{font-size:16px!important;line-height:1.35;font-weight:700;margin:0 0 9px;color:var(--green2)}
+#colabora .card p{font-size:14.5px;line-height:1.65;color:#5a544d}
+#colabora .contact-reasons{background:#fff}
+#colabora .contact-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(420px,1.18fr);gap:56px;align-items:start}
+#colabora .contact-reasons .contact-lead{font-size:16px;line-height:1.65;margin:0 0 12px;color:#3f3a35}
+#colabora .contact-reasons p:not(.contact-lead){font-size:14.5px;line-height:1.7;color:#625b54}
+#colabora .contact-card{padding:30px;border:1px solid #e5ddd1;border-radius:16px;background:#fbfaf7;box-shadow:0 12px 34px rgba(47,36,29,.05)}
+#colabora .contact-item{margin-bottom:16px}
+#colabora .label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:#35312d}
+#colabora input,#colabora select,#colabora textarea{font-size:14.5px}
+#colabora .btn{border:0;cursor:pointer;background:var(--brown);color:#fff;padding:13px 22px;border-radius:28px;font-size:14px;font-weight:700}
+#colabora .consent-row{font-size:13px;line-height:1.55;color:#514b44}
+@media(max-width:900px){#colabora .contact-grid{grid-template-columns:1fr;gap:30px}#colabora .contact-hero{padding:48px 0 42px}#colabora .contact-main,#colabora .contact-reasons{padding:46px 0}}
+@media(max-width:560px){#colabora .contact-hero h1{font-size:39px}#colabora .contact-main h2,#colabora .contact-reasons h2{font-size:30px}#colabora .contact-card{padding:22px 18px}}
+</style>
+
 </head>
 <body>
 <div class="site">
@@ -172,14 +202,14 @@ h3, h4, h5, h6 {
   <div class="wrap">
     <div class="eyebrow">Colaborá</div>
     <h1>Sumemos capacidades.</h1>
-    <p>Hay distintas formas de contribuir al trabajo de 8 B'atz'. Contanos cómo te gustaría colaborar y encontremos juntos la mejor manera de hacerlo.</p>
+    <p>Hay distintas formas de contribuir al trabajo de 8 B'atz'. Este espacio permite compartir propuestas, capacidades e iniciativas para explorar posibles formas de colaboración.</p>
   </div>
 </section>
 
 <section class="contact-main">
   <div class="wrap">
     <div class="eyebrow">Formas de colaborar</div>
-    <h2>¿Cómo te gustaría involucrarte?</h2>
+    <h2>¿Cómo podemos colaborar?</h2>
     <div class="cards-grid">
       <article class="card">
         <h3>Quiero proponer una alianza</h3>
@@ -195,7 +225,7 @@ h3, h4, h5, h6 {
       </article>
       <article class="card">
         <h3>Quiero colaborar de otra forma</h3>
-        <p>Si tenés otra forma de contribuir, contanos. También queremos escuchar propuestas que no encajen en las categorías anteriores.</p>
+        <p>También pueden compartirse otras formas de contribución que no estén contempladas en las categorías anteriores.</p>
       </article>
     </div>
   </div>
@@ -206,8 +236,8 @@ h3, h4, h5, h6 {
     <div>
       <div class="eyebrow">Contanos más</div>
       <h2>Iniciemos la conversación.</h2>
-      <p class="contact-lead">Completá el formulario y contanos brevemente cómo te gustaría colaborar.</p>
-      <p>Tu mensaje será enviado directamente a <strong>info@8batz.org</strong>. Revisaremos la información y podremos comunicarnos contigo utilizando los datos que nos compartás.</p>
+      <p class="contact-lead">Utilizá el formulario para compartir brevemente la propuesta o forma de colaboración.</p>
+      <p>Tu mensaje será enviado directamente a <strong>info@8batz.org</strong>. Revisaremos la información y, de ser necesario, nos comunicaremos utilizando los datos proporcionados.</p>
     </div>
     <form class="contact-card" id="colaboraForm" action="/api/colabora" method="post" novalidate>
       <div class="contact-item">
@@ -227,7 +257,7 @@ h3, h4, h5, h6 {
         <input id="telefono" name="telefono" type="tel" placeholder="Opcional" maxlength="40" autocomplete="tel">
       </div>
       <div class="contact-item">
-        <label class="label" for="tipo">¿Cómo te gustaría colaborar?</label>
+        <label class="label" for="tipo">Forma de colaboración</label>
         <select id="tipo" name="tipo" required>
           <option value="">Seleccioná una opción</option>
           <option value="Proponer una alianza">Proponer una alianza</option>
@@ -259,13 +289,6 @@ h3, h4, h5, h6 {
   </div>
 </section>
 
-<section class="contact-main">
-  <div class="wrap">
-    <div class="eyebrow">Importante</div>
-    <h2>Colaborar puede tomar distintas formas.</h2>
-    <p>No todas las formas de colaboración implican una donación económica. También pueden incluir conocimiento, servicios, insumos, cooperación técnica, articulación institucional u otras capacidades.</p>
-  </div>
-</section>
 </main>
 
 
